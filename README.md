@@ -17,6 +17,9 @@ Machine Learning & NLP Practitioner | AI for Finance | Anomaly Detection | Data 
 - Automation Tools  
 - Side Experiments  
 
-Dataset:
-Credit Card Fraud Detection dataset from Kaggle:
+### Dataset
+This project uses the Credit Card Fraud Detection dataset from Kaggle:
 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
+The dataset is not included in this repository due to size limitations.
+Please download it directly from Kaggle.
