@@ -35,171 +35,222 @@ fraud-detection-anomaly/
 │     └── isolation_forest.pkl
 
 
-# 🛡️ Credit Card Fraud Detection — Hybrid Machine Learning Approach
+# 🛡️ Credit Card Fraud Detection — Hybrid Machine Learning System
 
-This project builds a robust fraud‑detection pipeline using a combination of **unsupervised anomaly detection** and **supervised classification** to identify fraudulent credit‑card transactions in a highly imbalanced dataset.
+This project implements a complete fraud‑detection pipeline using both **unsupervised anomaly detection** and **supervised classification**. The goal is to replicate real‑world fraud analytics, where fraud is extremely rare and labels may be incomplete or delayed.
 
-The goal is to simulate a real‑world fraud‑detection workflow where anomalies must be detected proactively, and labelled fraud cases are extremely rare.
-
----
-
-## 📌 Project Overview
-
-Credit card fraud is a rare but high‑impact event. In this dataset, fraudulent transactions represent only **0.17%** of all records, making this a classic **imbalanced classification** problem.
-
-This project implements a **hybrid pipeline**:
-
-1. **Unsupervised anomaly detection**  
-   - Isolation Forest  
-   - One‑Class SVM  
-   These models detect unusual behaviour without relying on labels.
-
-2. **Supervised learning**  
-   - Logistic Regression  
-   - Random Forest  
-   - XGBoost  
-   These models learn directly from the labelled fraud cases.
-
-This combination mirrors real‑world fraud‑detection systems used in banking and fintech.
+The dataset is highly imbalanced, with fraudulent transactions representing only **0.17%** of all records. This makes fraud detection a challenging and realistic machine‑learning problem.
 
 ---
 
-## 📂 Dataset
+## 📂 Dataset Source
 
-The dataset used is the **Credit Card Fraud Detection** dataset from Kaggle:
+This project uses the **Credit Card Fraud Detection** dataset from Kaggle:
 
 🔗 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-The dataset contains:
+The dataset contains anonymised credit‑card transactions with PCA‑transformed features (`V1`–`V28`), along with `Amount`, `Time`, and a binary fraud label (`Class`). Due to its size (~150 MB), the dataset is **not stored in this repository**.  
+Instead, the notebook loads it directly from Google Drive using `gdown`.
 
-- **284,315** legitimate transactions  
-- **492** fraudulent transactions  
-- PCA‑transformed features (`V1`–`V28`)  
-- `Amount` and `Time`  
-- `Class` (0 = normal, 1 = fraud)
-
-Due to its size (~150 MB), the dataset is **not stored in this repository**.
-
-### 📥 Download the dataset
-
-You can download the dataset directly from Kaggle.
-
-Alternatively, the notebook loads the dataset from Google Drive using `gdown`:
-
-```python
-!pip install gdown
-
-import gdown
-
-file_id = "1tqCoMiZTBLwCPWM3D9NJpmKaUh7B7Ckc"
-url = f"https://drive.google.com/uc?id={file_id}"
-
-gdown.download(url, "creditcard.csv", quiet=False)
-```
-
-Then load it:
-
-```python
-import pandas as pd
-df = pd.read_csv("creditcard.csv")
-```
+Only the dataset link is relevant for reproducibility — no browser information or system metadata is included in this project.
 
 ---
 
-## 🧠 Methodology
+## 📘 Notebook
 
-### **1. Data Preprocessing**
-- Loaded dataset from Google Drive  
-- Checked for missing values  
-- Scaled numerical features  
-- Handled class imbalance using:
-  - Class weights  
-  - SMOTE (optional)  
-  - Stratified train/test split  
+You can view the full notebook here:
+
+👉 **`fraud_detection.ipynb`**
 
 ---
 
-### **2. Unsupervised Anomaly Detection**
-These models detect unusual patterns without labels:
+# 🧠 Methodology
 
-- **Isolation Forest**  
+This project uses a **two‑stage hybrid approach**:
+
+---
+
+## 1️⃣ Unsupervised Anomaly Detection  
+Used when labels are missing or unreliable.
+
+### Models:
+- **Isolation Forest**
 - **One‑Class SVM**
 
-They assign anomaly scores to each transaction, helping surface suspicious behaviour.
+These models learn what “normal” behaviour looks like and flag deviations as anomalies.
+
+### Results:
+
+#### **Isolation Forest**
+```
+precision (fraud): 0.29
+recall (fraud):    0.17
+f1-score:          0.22
+```
+
+#### **One‑Class SVM**
+```
+precision (fraud): 0.18
+recall (fraud):    0.10
+f1-score:          0.13
+```
+
+### Interpretation:
+- Unsupervised models struggle because they **do not use labels**.  
+- Fraud patterns are subtle and require supervised learning.  
+- These models are useful for **early anomaly detection**, not final classification.
 
 ---
 
-### **3. Supervised Classification**
-Using the labelled `Class` column:
+## 2️⃣ Supervised Classification  
+Used when labels are available.
 
+### Models:
+- **Logistic Regression**
+- **Random Forest**
+- **XGBoost**
+
+These models directly learn the difference between fraud and non‑fraud.
+
+### Results:
+
+#### **Logistic Regression**
+- High recall (0.92)  
+- Very low precision (0.06)  
+- Many false positives  
+- Linear model → cannot capture complex fraud patterns
+
+#### **Random Forest**
+- Precision (fraud): 0.96  
+- Recall (fraud): 0.77  
+- Strong performance  
+- Handles non‑linear patterns well
+
+#### **XGBoost (Best Performer)**
+- Precision (fraud): 0.86  
+- Recall (fraud): 0.83  
+- Excellent balance  
+- Industry‑standard for fraud detection
+
+### Interpretation:
+- Tree‑based models outperform linear models  
+- XGBoost provides the best fraud recall and precision  
+- Supervised learning is far more effective on this dataset  
+
+---
+
+# 📊 Confusion Matrices
+
+Confusion matrices for all models (unsupervised + supervised) are saved in:
+
+```
+plots/
+```
+
+Example:
+
+```markdown
+### XGBoost Confusion Matrix
+![XGBoost Confusion Matrix](plots/confusion_matrix_xgb.png)
+```
+
+---
+
+# 📈 ROC Curves
+
+ROC curves are generated for:
+
+### ✔ Supervised models  
 - Logistic Regression  
 - Random Forest  
-- XGBoost (best performer)
+- XGBoost  
 
-Metrics used:
+### ✔ Unsupervised models  
+- Isolation Forest  
+- One‑Class SVM  
 
-- Precision  
-- Recall  
-- F1‑score  
-- ROC‑AUC  
-- Confusion Matrix  
+### ✔ Overfitting check  
+- XGBoost Train vs Test ROC
 
----
+All ROC plots are saved in:
 
-## 📊 Model Performance
+```
+plots/
+```
 
-The confusion matrix shows that the model:
+Example:
 
-- Correctly identifies the majority of fraud cases  
-- Maintains a low false‑positive rate  
-- Achieves high recall on the minority class  
-- Avoids the trap of predicting “non‑fraud” for everything  
-
-This strong performance is due to:
-
-- The dataset being labelled  
-- PCA‑transformed features making fraud patterns separable  
-- Hybrid unsupervised + supervised pipeline  
-- Proper handling of class imbalance  
+```markdown
+### ROC Curves — Supervised Models
+![ROC Supervised](plots/roc_supervised.png)
+```
 
 ---
 
-## 🧾 Conclusion
+# 🔍 Overfitting Check
 
-This project demonstrates how a hybrid machine‑learning pipeline can effectively detect rare fraudulent transactions in a highly imbalanced dataset. The combination of **unsupervised anomaly detection** and **supervised classification** mirrors real‑world fraud‑detection systems used in financial institutions.
+A Train vs Test ROC comparison is included for XGBoost to verify generalisation.
 
-The confusion matrix and evaluation metrics confirm that the model achieves strong recall on the fraud class while maintaining low false‑positive rates. This shows that the model is not simply memorising patterns but genuinely learning the underlying structure of fraudulent behaviour.
+- If Train AUC >> Test AUC → overfitting  
+- If curves are similar → model generalises well  
 
-Overall, this project highlights the value of combining anomaly detection with supervised learning to build a scalable, reliable fraud‑detection system suitable for production environments.
+XGBoost shows strong generalisation.
 
 ---
 
-## 🚀 Future Improvements
+# 🧾 Conclusion
+
+This project demonstrates that:
+
+- **Unsupervised anomaly detection** is useful for discovering unusual patterns but performs poorly on labelled fraud classification.
+- **Supervised learning**, especially tree‑based models like Random Forest and XGBoost, performs exceptionally well on this dataset.
+- **XGBoost** achieves the best balance of precision and recall, making it the most reliable model for real‑world fraud detection.
+- A **hybrid system** combining both approaches mirrors real banking fraud‑detection pipelines.
+
+---
+
+# 🚀 Future Improvements
 
 - Deploy model as an API (FastAPI / Flask)  
-- Add real‑time streaming detection (Kafka)  
+- Add SHAP explainability for model transparency  
 - Train deep‑learning autoencoders for anomaly detection  
-- Implement cost‑sensitive learning  
-- Add SHAP explainability  
+- Implement real‑time streaming detection (Kafka)  
+- Use cost‑sensitive learning to penalise false negatives  
 
 ---
 
-## 📎 Repository Structure
+# 📁 Project Structure
 
 ```
-fraud-detection-anomaly/
-│── notebook.ipynb
+fraud-detection/
 │── README.md
+│── fraud_detection.ipynb
 │── requirements.txt
+│── data/
+│     └── (empty or dataset link in README)
 │── models/
+│     ├── xgboost_model.pkl
+│     ├── random_forest_model.pkl
+│     └── logistic_regression.pkl
 │── plots/
+│     ├── roc_supervised.png
+│     ├── roc_unsupervised.png
+│     ├── confusion_matrix_xgb.png
+│     ├── confusion_matrix_rf.png
+│     ├── confusion_matrix_lr.png
+│     ├── confusion_matrix_iso.png
+│     └── confusion_matrix_ocsvm.png
+│── src/
+      ├── preprocessing.py
+      ├── train_supervised.py
+      ├── train_unsupervised.py
+      └── utils.py
 ```
 
 ---
 
-## 👤 Author
+# 👤 Author
 
 **Akinyele**  
 Machine Learning & Data Science Practitioner  
 Specialising in anomaly detection, fraud analytics, and operational automation.
-
