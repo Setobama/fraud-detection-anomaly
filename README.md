@@ -54,6 +54,14 @@ Instead, the notebook loads it directly from Google Drive using `gdown`.
 
 Only the dataset link is relevant for reproducibility — no browser information or system metadata is included in this project.
 
+### What Are V1–V28?
+
+The original transaction features in the dataset contained sensitive financial information.  
+To protect customer privacy, the dataset creators applied Principal Component Analysis (PCA) to the raw features and released only the transformed components.
+
+V1–V28 are anonymised PCA components that capture the most important variance in the original data while ensuring that no personal or confidential information can be reconstructed.
+
+
 ---
 
 ## 📘 Notebook
