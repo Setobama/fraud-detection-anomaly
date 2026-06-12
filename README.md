@@ -1,5 +1,5 @@
 # fraud-detection-anomaly
-Fraud detection project using Isolation Forest and One-Class SVM to identify anomalous financial transactions. Part of my AI for Finance portfolio.
+Fraud detection project using Unsupervided & supervised method  to identify anomalous financial transactions. Part of my AI for Finance portfolio.
 # 👋 Hi, I'm Akinyele  
 Machine Learning & NLP Practitioner | AI for Finance | Anomaly Detection | Data Science
 
