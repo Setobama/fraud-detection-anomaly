@@ -42,7 +42,7 @@ V1–V28 are anonymised PCA components that capture the most important variance 
 
 ## 📘 Notebook
 
-You can view the full notebook here:
+You can view the full notebook here:fraud_detection_anomaly.ipynb
 
 👉 **`fraud_detection.ipynb`**
 
