@@ -128,7 +128,8 @@ These models directly learn the difference between fraud and non‑fraud.
 Confusion matrices for all models (unsupervised + supervised) are saved in:
 
 ```
-plots/
+![Alt text](path/to/image.png)
+
 ```
 
 Example:
