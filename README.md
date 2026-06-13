@@ -129,7 +129,7 @@ Confusion matrices for all models (unsupervised + supervised) are saved in:
 
 ```
 
-https://github.com/Setobama/fraud-detection-anomaly/blob/ce1316de52b1b594a7351878c639a2bd960e5ffe/images/Unsupervised%20Confusion%20Matrix.png
+[Unsupervised Confusion Matrix](https://github.com/Setobama/fraud-detection-anomaly/blob/ce1316de52b1b594a7351878c639a2bd960e5ffe/images/Unsupervised%20Confusion%20Matrix.png)
 ```
 
 Example:
