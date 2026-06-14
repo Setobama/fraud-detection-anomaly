@@ -140,7 +140,7 @@ Example:
 ### XGBoost Confusion Matrix
 ![XGBoost Confusion Matrix](plots/confusion_matrix_xgb.png)
 ```
-
+<img width="1028" height="545" alt="Image" src="https://github.com/user-attachments/assets/3050207a-de1e-449a-a85c-702907f3b6cf" />
 ---
 
 # 📈 ROC Curves
