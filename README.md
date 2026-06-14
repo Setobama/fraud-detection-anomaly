@@ -128,10 +128,9 @@ These models directly learn the difference between fraud and non‑fraud.
 Confusion matrices for all models (unsupervised + supervised) are saved in:
 
 ```
-### Unsupervised
-![Unsupervised Confusion Matrix](plots /https://github.com/Setobama/fraud-detection-anomaly/blob/b3b3f4640ad2c14ab8b1ee63fcecd6bc26ead709/images/Unsupervised%20Confusion%20Matrix.png)
+### Unsupervised Confusion Matrix
+<img width="997" height="448" alt="Image" src="https://github.com/user-attachments/assets/5d9c00b9-b65a-4986-8a3e-a222bb037c40" />
 
-<img width="1028" height="545" alt="Image" src="https://github.com/user-attachments/assets/3050207a-de1e-449a-a85c-702907f3b6cf" />
 ```
 
 Example:
