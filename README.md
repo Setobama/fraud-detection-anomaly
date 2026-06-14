@@ -207,12 +207,17 @@ fraud-detection/
 │── README.md
 │── fraud_detection.ipynb
 │── requirements.txt
+│
 │── data/
 │     └── (empty or dataset link in README)
+│
 │── models/
 │     ├── xgboost_model.pkl
 │     ├── random_forest_model.pkl
-│     └── logistic_regression.pkl
+│     ├── logistic_regression.pkl
+│     ├── isolation_forest.pkl
+│     └── oneclass_svm.pkl
+│
 │── plots/
 │     ├── roc_supervised.png
 │     ├── roc_unsupervised.png
@@ -220,12 +225,21 @@ fraud-detection/
 │     ├── confusion_matrix_rf.png
 │     ├── confusion_matrix_lr.png
 │     ├── confusion_matrix_iso.png
-│     └── confusion_matrix_ocsvm.png
+│     ├── confusion_matrix_ocsvm.png
+│     ├── scatter_fraud.png
+│     └── feature_importance_xgb.png   (optional)
+│
 │── src/
-      ├── preprocessing.py
-      ├── train_supervised.py
-      ├── train_unsupervised.py
-      └── utils.py
+│     ├── preprocessing.py
+│     ├── train_supervised.py
+│     ├── train_unsupervised.py
+│     ├── evaluate_supervised.py
+│     ├── evaluate_unsupervised.py
+│     └── utils.py
+│
+└── notebooks/
+      └── experiments.ipynb   (optional)
+
 ```
 
 ---
