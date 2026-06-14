@@ -127,22 +127,12 @@ These models directly learn the difference between fraud and non‑fraud.
 
 Confusion matrices for all models (unsupervised + supervised) are saved in:
 
-```
-### Unsupervised Confusion Matrix
-<img width="997" height="448" alt="Image" src="https://github.com/user-attachments/assets/5d9c00b9-b65a-4986-8a3e-a222bb037c40" />
-```
-```markdown
-### XGBoost Confusion Matrix
-<img width="1676" height="466" alt="Image" src="https://github.com/user-attachments/assets/5ca8b54d-8fe6-432c-836c-dc0aa3f53b32" />
-```
-### Fraud Scatter Plot
-<img width="1028" height="545" alt="Image" src="https://github.com/user-attachments/assets/3050207a-de1e-449a-a85c-702907f3b6cf" />
 ---
 ### Unsupervised Confusion Matrix
 <img src="https://github.com/user-attachments/assets/5d9c00b9-b65a-4986-8a3e-a222bb037c40" width="900" />
 
 ### XGBoost Confusion Matrix
-<img src="https://github.com/user-attachments/assets/5ca8b54d-8fe6-432c-836c-dc0aa3f53b32" width="900" />
+<img src="https://github.com/user-attachments/assets/5ca8b54d-8fe6-432c-836c-dc0aa3f53b32" width="1200" />
 
 ### Fraud Scatter Plot
 <img src="https://github.com/user-attachments/assets/3050207a-de1e-449a-a85c-702907f3b6cf" width="900" />
