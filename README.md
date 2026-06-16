@@ -164,8 +164,8 @@ Example:
 ### 📈 ROC Curves — Supervised Models
 <img width="863" height="641" alt="Image" src="https://github.com/user-attachments/assets/d9dd010b-01c5-4c7d-8bee-b7b21f5bf7c4" />
 
-
 ```
+
 📊 Dataset Separation View
 <img width="1386" height="589" alt="Image" src="https://github.com/user-attachments/assets/caff22b8-c8a5-4981-b7a9-a02148b56194" />
 
@@ -181,7 +181,7 @@ overlays fraud and non‑fraud together, revealing fraud’s rarity.
  
  compares actual labels against XGBoost’s predicted classifications.
 
----
+
 
 # 🔍 Overfitting Check
 
