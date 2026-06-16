@@ -156,15 +156,26 @@ ROC curves are generated for:
 All ROC plots are saved in:
 
 ```
-plots/
+
 ```
 
 Example:
 
 ```markdown
 ### ROC Curves — Supervised Models
-![ROC Supervised](plots/roc_supervised.png)
+<img width="1386" height="589" alt="Image" src="https://github.com/user-attachments/assets/caff22b8-c8a5-4981-b7a9-a02148b56194" />
 ```
+📊 Dataset Separation View
+<img width="1386" height="589" alt="Image" src="https://github.com/user-attachments/assets/caff22b8-c8a5-4981-b7a9-a02148b56194" />
+shows fraud and non‑fraud distributions in separate histograms
+
+📊 Combined Class Distribution (Log Scale)
+<img width="575" height="451" alt="Image" src="https://github.com/user-attachments/assets/ff1ed415-21a0-4727-b6fb-672344cea91c" />
+overlays fraud and non‑fraud together, revealing fraud’s rarity.
+
+📊 Ground Truth vs Model Predictions
+<img width="1388" height="592" alt="Image" src="https://github.com/user-attachments/assets/e84e2147-14a1-4d6f-8313-b3e9fb540693" />
+ compares actual labels against XGBoost’s predicted classifications.
 
 ---
 
